@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Consulta</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background: #f7f9fc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h2 {
+      margin: 20px 0;
+      color: #333;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: #4caf50;
+      color: white;
+      font-weight: bold;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f8e9;
+    }
+
+    button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button.edit {
+      background-color: #2196f3;
+    }
+
+    button.delete {
+      background-color: #f44336;
+    }
+
+    a {
+      margin-top: 20px;
+      color: #4caf50;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #388e3c;
+    }
+
+    /* Responsividade simples */
+    @media (max-width: 640px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead tr {
+        display: none;
+      }
+
+      tbody tr {
+        margin-bottom: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      }
+
+      tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border: none;
+        border-bottom: 1px solid #eee;
+      }
+
+      tbody td:last-child {
+        border-bottom: none;
+      }
+
+      tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #555;
+      }
+
+      button {
+        margin: 5px 5px 0 0;
+        width: 48%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Consulta</h2>
+  <table>
+    <thead>
+      <tr><th>Nome</th><th>Email</th><th>Ações</th></tr>
+    </thead>
+    <tbody id="tabela"></tbody>
+  </table>
+
+  <a href="menu.html">Voltar</a>
+
+  <script src="scripts/crud.js"></script>
+  <script>
+    // Ajusta os data-labels para responsividade (funciona com o CSS acima)
+    function updateTableDataLabels() {
+      const rows = document.querySelectorAll("#tabela tr");
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        if (cells.length === 3) {
+          cells[0].setAttribute("data-label", "Nome");
+          cells[1].setAttribute("data-label", "Email");
+          cells[2].setAttribute("data-label", "Ações");
+        }
+      });
+    }
+
+    // Atualiza os data-labels após o carregamento da tabela
+    document.addEventListener("DOMContentLoaded", () => {
+      updateTableDataLabels();
+    });
+
+    // Também chama updateTableDataLabels após a tabela ser atualizada (você pode chamar isso dentro do seu updateTable no crud.js)
+  </script>
+</body>
+</html>
