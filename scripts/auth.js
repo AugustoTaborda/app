@@ -57,6 +57,6 @@ function registrar() {
 
 // Função para realizar logout
 function logout() {
-  removeStorageItem('logado');
+  localStorage.removeItem('logado');
   location.href = 'index.html';
 }

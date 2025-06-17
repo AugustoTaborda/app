@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Menu</title>
+  <script src="scripts/util.js"></script> <!-- se você estiver usando getStorageItem() -->
   <script src="scripts/auth.js" defer></script>
   <style>
     body {
@@ -53,7 +54,23 @@
     <h1>Menu Principal</h1>
     <button onclick="location.href='cadastro.html'">Novo Cadastro</button>
     <button onclick="location.href='consulta.html'">Consultar</button>
-    <button onclick="logout()">Logout</button>
+    <button id="logoutBtn">Logout</button>
   </div>
+
+  <script>
+    // Garante que só usuários logados vejam essa página
+    document.addEventListener("DOMContentLoaded", () => {
+      const usuarioLogado = localStorage.getItem('logado');
+      if (!usuarioLogado) {
+        alert("Você precisa estar logado.");
+        location.href = 'index.html';
+      }
+
+      // Garante que o botão de logout funcione
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        logout();
+      });
+    });
+  </script>
 </body>
 </html>
