@@ -139,9 +139,12 @@
 
   <a href="menu.html">Voltar</a>
 
+  <!-- Importa util.js antes do crud.js -->
+  <script src="scripts/util.js"></script>
   <script src="scripts/crud.js"></script>
+
   <script>
-    // Ajusta os data-labels para responsividade (funciona com o CSS acima)
+    // Atualiza data-labels para responsividade
     function updateTableDataLabels() {
       const rows = document.querySelectorAll("#tabela tr");
       rows.forEach(row => {
@@ -154,12 +157,13 @@
       });
     }
 
-    // Atualiza os data-labels após o carregamento da tabela
+    // Após DOM carregado, atualiza a tabela e labels
     document.addEventListener("DOMContentLoaded", () => {
-      updateTableDataLabels();
+      if (typeof updateTable === 'function') {
+        updateTable();  // função do crud.js que preenche a tabela
+        updateTableDataLabels();
+      }
     });
-
-    // Também chama updateTableDataLabels após a tabela ser atualizada (você pode chamar isso dentro do seu updateTable no crud.js)
   </script>
 </body>
 </html>

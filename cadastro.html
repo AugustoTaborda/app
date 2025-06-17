@@ -45,6 +45,7 @@
       font-size: 16px;
       transition: border-color 0.3s ease;
     }
+
     input:focus {
       border-color: #4caf50;
       outline: none;
@@ -61,6 +62,7 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #45a045;
     }
@@ -73,6 +75,7 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
+
     a:hover {
       color: #388e3c;
     }
@@ -90,12 +93,14 @@
     <h2>Cadastro de Pessoa</h2>
     <input id="nome" placeholder="Nome" autocomplete="off" />
     <input id="email" placeholder="Email" autocomplete="off" />
-    <button onclick="savePerson()">Salvar</button>
+    <button onclick="salvarPessoa()">Salvar</button>
     <br />
     <a href="menu.html">Cancelar</a>
     <p id="msgCadastro"></p>
   </div>
 
+  <!-- util.js deve vir primeiro para dar suporte ao crud.js -->
+  <script src="scripts/util.js"></script>
   <script src="scripts/crud.js"></script>
 </body>
 </html>
