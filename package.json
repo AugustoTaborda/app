@@ -1,19 +1,22 @@
 {
-  "dependencies": {
-    "chai": "^5.2.0",
-    "chromedriver": "^137.0.3",
-    "mocha": "^11.6.0",
-    "selenium": "^2.20.0",
-    "selenium-webdriver": "^4.33.0"
-  },
   "name": "app",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha selenium/*.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.6.0",
+    "selenium": "^2.20.0",
+    "selenium-webdriver": "^4.33.0"
+  },
+  "devDependencies": {
+    "chromedriver": "^137.0.4"
+  }
 }

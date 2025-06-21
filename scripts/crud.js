@@ -71,8 +71,8 @@ function updateTable() {
       <td>${person.name}</td>
       <td>${person.email}</td>
       <td>
-        <button onclick="editar(${index})">Editar</button>
-        <button onclick="excluir(${index})">Excluir</button>
+        <button class="edit" onclick="editar(${index})">Editar</button>
+        <button class="delete" onclick="excluir(${index})">Excluir</button>
       </td>
     `;
     table.appendChild(row);
@@ -85,12 +85,14 @@ function editar(index) {
   location.href = 'cadastro.html';
 }
 
-// Excluir
+
 function excluir(index) {
-  people = getStorageItem('people') || [];
-  people.splice(index, 1);
-  setStorageItem('people', people);
-  updateTable();
+  if (confirm('Tem certeza que deseja excluir esta pessoa?')) {
+    people = getStorageItem('people') || [];
+    people.splice(index, 1);
+    setStorageItem('people', people);
+    updateTable();
+  }
 }
 
 // Se estiver na consulta.html, monta a tabela
